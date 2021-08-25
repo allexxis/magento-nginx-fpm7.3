@@ -29,6 +29,9 @@ find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {
 find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
 chown -R :www-data .
 
+#Configure nginx domain
+sed -i 's/{{MAGENTO_DOMAIN}}/${MAGENTO_DOMAIN}/' nginx.conf
+
 #Run web server
 service php7.3-fpm start
 service nginx start
