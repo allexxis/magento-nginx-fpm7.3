@@ -18,6 +18,10 @@ This configuration automatically uses magepack in case you have the configuratio
 
 This configuration uses at minimum 8GB of RAM
 
+### Repository
+
+https://github.com/allexxis/magento-nginx-fpm7.3
+
 ### Before we begin 
 
 **This guide assumes that you have already an installation of magento2 on a database so in that case you should have the following files**
