@@ -105,7 +105,7 @@ docker-compose --version
 
 **Copy the files within the src folder in this repo https://github.com/allexxis/magento-nginx-fpm7.3/src to you own magento2 root folder every file is required** 
 
-1. Change environmental variables for your own variables on [docker-compose.yml](https://github.com/allexxis/magento-nginx-fpm7.3/src/docker-compose.yml) or setup environmentals on your host machine
+1. Change environmental variables for your own variables on [docker-compose.yml](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/docker-compose.yml) or setup environmentals on your host machine
 
 ​      \- MAGENTO_USERNAME=$MAGENTO_USERNAME (Your magento [public key](https://marketplace.magento.com/customer/accessKeys/) )
 
@@ -113,7 +113,7 @@ docker-compose --version
 
 ​      \- MAGENTO_DOMAIN=$MAGENTO_DOMAIN (The domain you will use for your site **yourdomain.com** or 127.0.0.1 if using localhost)
 
-2. Change the theme configuration on  [themes.json](https://github.com/allexxis/magento-nginx-fpm7.3/src/themes.json) 
+2. Change the theme configuration on  [themes.json](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/themes.json) 
 
    `Note: If you set the themes array empty []  the configuration will use  bin/magento setup:static-content:deploy -f to compile all resources`
 
@@ -137,7 +137,7 @@ docker-compose --version
 
    
 
-4. Change configuration on [nginx.conf](https://github.com/allexxis/magento-nginx-fpm7.3/src/nginx.conf)  in case you have installed magento2  on another folder my path is /var/www the configuration will hear port **80** and **443** by deafult;
+4. Change configuration on [nginx.conf](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/nginx.conf)  in case you have installed magento2  on another folder my path is /var/www the configuration will hear port **80** and **443** by deafult;
 
    ```nginx
    upstream fastcgi_backend {
@@ -158,7 +158,7 @@ docker-compose --version
    
    ```
 
-5. Change configuration on [php.ini](https://github.com/allexxis/magento-nginx-fpm7.3/src/php.ini) configuration for your own php configuration if need it php fpm will take this configuration by default
+5. Change configuration on [php.ini](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/php.ini) configuration for your own php configuration if need it php fpm will take this configuration by default
 
    ```php
    memory_limit = 756M
