@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+   elasticsearch:
+      restart: 'always'
+      image: elasticsearch:7.14.0
+      container_name: elasticsearch
+      environment:
+         - node.name=elasticsearch
+         - cluster.name=es-docker-cluster
+         - discovery.seed_hosts=elasticsearch
+         - cluster.initial_master_nodes=elasticsearch
+         - 'ES_JAVA_OPTS=-Xms4600m -Xmx4600m'
+      ports:
+         - '9200:9200'
+         - '9300:9300'
+   redis:
+      restart: 'always'
+      container_name: redis
+      image: redis
+      ports:
+         - 6379:6379
+   magento:
+      restart: 'always'
+      container_name: magento
+      image: allexxis/magento-nginx-fpm7.3
+      environment:
+         - MAGENTO_USERNAME=$MAGENTO_USERNAME
+         - MAGENTO_PASSWORD=$MAGENTO_PASSWORD
+         - MAGENTO_DOMAIN=$MAGENTO_DOMAIN
+      volumes:
+         - ./:/var/www
+         - ./nginx.conf:/etc/nginx/sites-available/default
+         - ./php.ini:/etc/php/7.3/fpm/php.ini
+      ports:
+         - 80:80
+      links:
+         - redis
+         - elasticsearch
+      depends_on:
+         - elasticsearch

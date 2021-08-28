@@ -1,0 +1,13 @@
+{
+    "themes":[
+        {
+            "area":"adminhtml",
+            "langs":["en_US"],
+            "name":"Magento/luma"
+        },{
+            "area":"frontend",
+            "langs":["en_US"],
+            "name":"Magento/luma"
+        }
+    ]
+}
