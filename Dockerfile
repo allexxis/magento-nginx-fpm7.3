@@ -32,8 +32,10 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 RUN npm i -g magepack
 
-COPY start.sh /var/start.sh
-
+RUN mkdir /var/scripts
+COPY start.sh /var/scripts/start.sh
+COPY replace.js /var/scripts/replace.js
+COPY themes.js /var/scripts/themes.js
 # RUN bin/magento set:di:co \
 #     && bin/magento set:sta:dep -f \
 #     && bin/magento cache:flu \
@@ -48,6 +50,6 @@ COPY start.sh /var/start.sh
 EXPOSE 80
 
 
-CMD  mv /var/start.sh /var/www;cd /var/www; chmod +x start.sh; ./start.sh;
+CMD  mv /var/scripts/* /var/www;cd /var/www; chmod +x start.sh; ./start.sh;
 
 
