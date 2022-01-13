@@ -9,10 +9,7 @@ RUN apt-get install cron
 
 RUN add-apt-repository ppa:ondrej/php
 
-
 RUN apt-get update
-
-RUN apt-get -y install python3-certbot-nginx
 
 RUN apt-get -y install php7.3
 

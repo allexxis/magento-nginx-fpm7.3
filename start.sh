@@ -57,8 +57,5 @@ echo "Starting web servers..."
 service php7.3-fpm start
 service nginx start
 
-echo "Intalling ssl certificates..."
-certbot certonly --noninteractive --agree-tos -m dev@avify.com -d ${MAGENTO_DOMAIN}
-
 #Run forever
 tail -f /dev/null
