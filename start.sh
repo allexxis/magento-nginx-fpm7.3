@@ -58,7 +58,7 @@ service php7.3-fpm start
 service nginx start
 
 echo "Creating let's encrypt ssl..."
-certbot run --nginx --non-interactive  --agree-tos --email ${LES_ENCRYPT_EMAIL} -d ${MAGENTO_DOMAIN} --redirect
+certbot run --nginx --non-interactive  --agree-tos -d ${MAGENTO_DOMAIN} --redirect
 
 #Run forever
 tail -f /dev/null
