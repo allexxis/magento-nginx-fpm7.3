@@ -57,5 +57,8 @@ echo "Starting web servers..."
 service php7.3-fpm start
 service nginx start
 
+echo "Creating let's encrypt ssl..."
+certbot certonly --nginx --non-interactive --agree-tos -m ${LETS_ENCRYPT_EMAIL} -d ${MAGENTO_DOMAIN}
+
 #Run forever
 tail -f /dev/null

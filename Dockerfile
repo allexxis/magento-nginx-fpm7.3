@@ -11,6 +11,8 @@ RUN add-apt-repository ppa:ondrej/php
 
 RUN apt-get update
 
+RUN apt-get -y install python3-certbot-nginx
+
 RUN apt-get -y install php7.3
 
 RUN apt-get -y install php7.3-bcmath php7.3-ctype php7.3-curl php7.3-dom php7.3-gd php7.3-iconv php7.3-intl php7.3-mbstring php7.3-mysql php7.3-xml php7.3-soap php7.3-xsl php7.3-zip php7.3-fpm
