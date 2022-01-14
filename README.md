@@ -4,13 +4,14 @@
 
 - Magento2
 - Nginx
+- Let's encrypt
 - Php-fpm7.3
 - Docker
 - Docker-compose
 - Elastic Search
 - Redis
 
-With this image you can automate magento2 deployments with the use of docker-compose on Linux .
+With this image you can automate magento2 deployments with the use of docker-compose on Linux with automatic ssl configuration you just need to point your dns A record to the ip of the machine and all the work will be done automatically.
 
 This guide shows how to implement the deploy using Ubuntu, but you can replicate the tutorial on any other distro.
 
@@ -112,6 +113,8 @@ docker-compose --version
 ​      \- MAGENTO_PASSWORD=$MAGENTO_PASSWORD (Your magento [private key](https://marketplace.magento.com/customer/accessKeys/) )
 
 ​      \- MAGENTO_DOMAIN=$MAGENTO_DOMAIN (The domain you will use for your site **yourdomain.com** or 127.0.0.1 if using localhost)
+
+\- LETS_ENCRYPT_EMAIL=$LETS_ENCRYPT_EMAIL (The email let's encrypt will use to send notification about the certificate expiration)
 
 2. Change the theme configuration on  [themes.json](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/themes.json) 
 
