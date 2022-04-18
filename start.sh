@@ -54,7 +54,7 @@ chown -R :www-data .
 
 echo "Starting web servers..."
 #Run web server
-service php7.3-fpm start
+service php7.4-fpm start
 service nginx start
 
 echo "Creating let's encrypt ssl..."

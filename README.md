@@ -5,7 +5,7 @@
 - Magento2
 - Nginx
 - Let's encrypt
-- Php-fpm7.3
+- Php-fpm7.4
 - Docker
 - Docker-compose
 - Elastic Search
@@ -21,7 +21,7 @@ This configuration uses at minimum 8GB of RAM
 
 ### Repository
 
-https://github.com/allexxis/magento-nginx-fpm7.3
+https://github.com/allexxis/magento-nginx-fpm7.4
 
 ### Before we begin 
 
@@ -104,9 +104,9 @@ docker-compose --version
 
 ### Step #3 
 
-**Copy the files within the src folder in this repo https://github.com/allexxis/magento-nginx-fpm7.3/src to you own magento2 root folder every file is required** 
+**Copy the files within the src folder in this repo https://github.com/allexxis/magento-nginx-fpm7.4/src to you own magento2 root folder every file is required** 
 
-1. Change environmental variables for your own variables on [docker-compose.yml](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/docker-compose.yml) or setup environmentals on your host machine
+1. Change environmental variables for your own variables on [docker-compose.yml](https://github.com/allexxis/magento-nginx-fpm7.4/blob/master/src/docker-compose.yml) or setup environmentals on your host machine
 
 ​      \- MAGENTO_USERNAME=$MAGENTO_USERNAME (Your magento [public key](https://marketplace.magento.com/customer/accessKeys/) )
 
@@ -116,7 +116,7 @@ docker-compose --version
 
 \- LETS_ENCRYPT_EMAIL=$LETS_ENCRYPT_EMAIL (The email let's encrypt will use to send notification about the certificate expiration)
 
-2. Change the theme configuration on  [themes.json](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/themes.json) 
+2. Change the theme configuration on  [themes.json](https://github.com/allexxis/magento-nginx-fpm7.4/blob/master/src/themes.json) 
 
    `Note: If you set the themes array empty []  the configuration will use  bin/magento setup:static-content:deploy -f to compile all resources`
 
@@ -140,11 +140,11 @@ docker-compose --version
 
    
 
-4. Change configuration on [nginx.conf](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/nginx.conf)  in case you have installed magento2  on another folder my path is /var/www the configuration will hear port **80** and **443** by deafult;
+4. Change configuration on [nginx.conf](https://github.com/allexxis/magento-nginx-fpm7.4/blob/master/src/nginx.conf)  in case you have installed magento2  on another folder my path is /var/www the configuration will hear port **80** and **443** by deafult;
 
    ```nginx
    upstream fastcgi_backend {
-     server   unix:/var/run/php/php7.3-fpm.sock;
+     server   unix:/var/run/php/php7.4-fpm.sock;
    }
    
    server {
@@ -161,7 +161,7 @@ docker-compose --version
    
    ```
 
-5. Change configuration on [php.ini](https://github.com/allexxis/magento-nginx-fpm7.3/blob/master/src/php.ini) configuration for your own php configuration if need it php fpm will take this configuration by default
+5. Change configuration on [php.ini](https://github.com/allexxis/magento-nginx-fpm7.4/blob/master/src/php.ini) configuration for your own php configuration if need it php fpm will take this configuration by default
 
    ```php
    memory_limit = 756M
@@ -201,12 +201,12 @@ docker container exec -it magento  /bin/bash
 In case that the magento-fpm docker image gets updated 
 
 ```bash
-docker pull allexxis/magento-nginx-fpm7.3
+docker pull allexxis/magento-nginx-fpm7.4
 docker-compose down
 docker-compose up -d
 ```
 
-### Possible errors 
+## Possible errors 
 
 Message:
 
@@ -220,4 +220,18 @@ Solution:
   sudo sysctl -w vm.max_map_count=262144
   ```
 
-  
+## How to buil the image
+- Login into your accont using the console
+
+  ```bash
+   docker login
+  ```
+- Run the following build command on the root repository
+
+  ```bash
+   docker build -t [username]/magento-nginx-fpm7.4 . 
+  ```
+- Push the image to the repository
+  ```bash
+   docker push [username]/magento-nginx-fpm7.4 
+  ```

@@ -23,7 +23,7 @@ services:
    magento:
       restart: 'always'
       container_name: magento
-      image: allexxis/magento-nginx-fpm7.3
+      image: allexxis/magento-nginx-fpm7.4
       environment:
          - MAGENTO_USERNAME=$MAGENTO_USERNAME
          - MAGENTO_PASSWORD=$MAGENTO_PASSWORD
