@@ -13,7 +13,7 @@ node replace.js
 
 #Install magento packages
 echo "Installing packages ..."
-composer install
+composer install --no-interaction
 
 #Give magento execution permission
 chmod +x bin/magento
