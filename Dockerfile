@@ -29,11 +29,17 @@ RUN bash nodesource_setup.sh
 
 RUN apt-get install nodejs && node -v && npm -v
 
+#This env remove errors when trying to install magepack
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
 RUN npm i -g magepack
 
+RUN apt-get -y install varnish
+COPY varnish /etc/default/varnish
+COPY varnish.service /etc/systemd/system/varnish.service
+
 RUN mkdir /var/scripts
+
+
 COPY start.sh /var/scripts/start.sh
 COPY replace.js /var/scripts/replace.js
 COPY themes.js /var/scripts/themes.js

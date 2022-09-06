@@ -4,13 +4,12 @@
 echo "Starting cron service ..."
 service cron start
 
-#Configure nginx domain
+#Configure nginx domain and create credentials
 echo "Configuring domain:${MAGENTO_DOMAIN} ..."
 node replace.js
 
 #Create Credentials
-echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > auth.json
-
+#echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > auth.json
 
 #Install magento packages
 echo "Installing packages ..."

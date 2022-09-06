@@ -24,6 +24,11 @@ services:
       restart: 'always'
       container_name: magento
       image: allexxis/magento-nginx-fpm7.4
+      ulimits:
+         nproc: 65535
+         nofile:
+            soft: 26677
+            hard: 46677
       environment:
          - MAGENTO_USERNAME=$MAGENTO_USERNAME
          - MAGENTO_PASSWORD=$MAGENTO_PASSWORD
@@ -34,6 +39,7 @@ services:
          - ./php.ini:/etc/php/7.3/fpm/php.ini
       ports:
          - 80:80
+         - 443:443
       links:
          - redis
          - elasticsearch
