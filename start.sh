@@ -53,6 +53,7 @@ chown -R :www-data .
 
 echo "Starting web servers..."
 #Run web server
+service varnish start
 service php7.4-fpm start
 service nginx start
 
